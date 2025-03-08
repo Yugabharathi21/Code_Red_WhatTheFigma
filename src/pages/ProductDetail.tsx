@@ -10,41 +10,6 @@ const relatedProducts = [
     description: "Sweet and juicy organic pears",
     price: 10.99,
     image: "https://images.unsplash.com/photo-1514756331096-242fdeb70d4a?auto=format&fit=crop&q=80"
-  },
-  {
-    id: "2",
-    name: "Organic Mushrooms",
-    description: "Rich in flavor, perfect for cooking",
-    price: 10.99,
-    image: "https://images.unsplash.com/photo-1504545102780-26774c1bb073?auto=format&fit=crop&q=80"
-  },
-  {
-    id: "3",
-    name: "Radish Greens",
-    description: "Crisp and fresh garden radishes",
-    price: 10.99,
-    image: "https://images.unsplash.com/photo-1593105544559-f0794a669aa6?auto=format&fit=crop&q=80"
-  },
-  {
-    id: "4",
-    name: "Seasonal Vegetables",
-    description: "Handpicked for the best quality",
-    price: 10.99,
-    image: "https://images.unsplash.com/photo-1557844352-761f2565b576?auto=format&fit=crop&q=80"
-  },
-  {
-    id: "5",
-    name: "Watermelon",
-    description: "Refreshing, naturally sweet watermelon",
-    price: 10.99,
-    image: "https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&q=80"
-  },
-  {
-    id: "6",
-    name: "Cherry Bunch",
-    description: "Sun-ripened, sweet and tangy cherries",
-    price: 10.99,
-    image: "https://images.unsplash.com/photo-1528821128474-27f963b062bf?auto=format&fit=crop&q=80"
   }
 ];
 

@@ -1,54 +1,66 @@
-# React + TypeScript + Vite
+# Code Red - What The Figma
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a website created for the NITT Hackathon 2025, specifically for the "What The Figma" event.
 
-Currently, two official plugins are available:
+## Table of Contents
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Acknowledgements](#acknowledgements)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Introduction
+Code Red - What The Figma is a project developed during the NITT Hackathon 2025. The goal of this project is to provide an interactive and user-friendly platform for designing and prototyping using Figma.
 
-## Expanding the ESLint configuration
+## Features
+- User-friendly interface
+- Real-time collaboration
+- Extensive design tools
+- Export options for various formats
+- Responsive design
+- Cross-platform compatibility
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Installation
+To install and run this project locally, follow these steps:
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+1. Clone the repository:
+  ```bash
+  git clone https://github.com/yourusername/Code_Red_WhatTheFigma.git
+  ```
+2. Navigate to the project directory:
+  ```bash
+  cd Code_Red_WhatTheFigma
+  ```
+3. Install the dependencies:
+  ```bash
+  npm install
+  ```
+4. Start the development server:
+  ```bash
+  npm start
+  ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Usage
+Once the development server is running, open your browser and navigate to `http://localhost:3000` to start using the application.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Contributing
+Contributions are welcome! Please fork the repository and create a pull request with your changes. Make sure to follow the code of conduct.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+## License
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+
+## Contact
+For any inquiries or feedback, please contact us at:
+- Email: support@codereadwhatthefigma.com
+- GitHub Issues: [https://github.com/yourusername/Code_Red_WhatTheFigma/issues](https://github.com/yourusername/Code_Red_WhatTheFigma/issues)
+
+## Acknowledgements
+We would like to thank the following resources and individuals for their support and contributions:
+- NITT Hackathon 2025 organizers
+- Figma for providing an excellent design tool
+- Open-source community for their invaluable resources and libraries
+- Our mentors and peers for their guidance and feedback
+- Our team members for their hard work and dedication

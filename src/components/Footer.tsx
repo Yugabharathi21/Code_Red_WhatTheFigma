@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="border-t border-[#E6E6E6] pt-12 grid grid-cols-4 gap-8">
           <div>
             <Link to="/" className="text-2xl font-normal leading-9">
-              FreshHarvest
+              FreshHarvest      
             </Link>
             <div className="mt-11 flex gap-2">
               {/* Social Media Icons Placeholders */}

@@ -15,7 +15,7 @@ const Home: React.FC = () => {
           </p>
         </div>
         <Link
-          to="/shop"
+          to="/article"
           className="w-[150px] px-6 md:px-8 py-4 md:py-5 bg-black shadow-[0px_1px_2px_rgba(0,0,0,0.05)] rounded-lg flex justify-center items-center"
         >
           <span className="text-white text-lg md:text-xl lg:text-2xl font-medium font-inter">Article</span>

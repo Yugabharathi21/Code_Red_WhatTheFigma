@@ -10,7 +10,6 @@ const relatedProducts = [
     description: "Sweet and juicy organic pears",
     price: 10.99,
     image: "https://images.unsplash.com/photo-1514756331096-242fdeb70d4a?auto=format&fit=crop&q=80"
-<<<<<<< HEAD
   },
   {
     id: "2",
@@ -46,8 +45,6 @@ const relatedProducts = [
     description: "Sun-ripened, sweet and tangy cherries",
     price: 10.99,
     image: "https://images.unsplash.com/photo-1528821128474-27f963b062bf?auto=format&fit=crop&q=80"
-=======
->>>>>>> 9f86bfcf19da70fc61f825ccbc55991d303fcbe5
   }
 ];
 

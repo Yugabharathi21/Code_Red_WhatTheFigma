@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import SectionTransition from '../components/SectionTransition';
 
 export default function About() {
   const [formData, setFormData] = useState({
@@ -23,40 +25,87 @@ export default function About() {
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-[1280px] mx-auto px-20 py-16">
+      <SectionTransition direction="up" className="max-w-[1280px] mx-auto px-20 py-16">
         <div className="flex gap-36">
           {/* Left Content */}
-          <div className="flex flex-col gap-6 max-w-[624px]">
-            <h1 className="text-6xl font-bold">About</h1>
-            <p className="text-2xl text-[#828282] font-normal leading-9">
+          <motion.div 
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6 }}
+            className="flex flex-col gap-6 max-w-[624px]"
+          >
+            <motion.h1 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-6xl font-bold"
+            >
+              About
+            </motion.h1>
+            <motion.p 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3 }}
+              className="text-2xl text-[#828282] font-normal leading-9"
+            >
               Your trusted source for fresh, organic produce delivered right to your doorstep.
-            </p>
-            <p className="text-xl text-black font-medium leading-[30px]">
+            </motion.p>
+            <motion.p 
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="text-xl text-black font-medium leading-[30px]"
+            >
               At FreshHarvest, we believe in bringing the freshest, highest-quality organic produce directly to your table. Our carefully curated selection of fruits, vegetables, and artisanal products ensures that you get the best nature has to offer.
               <br /><br />
               We work directly with local farmers and sustainable producers to maintain the highest standards of quality while supporting our community and protecting the environment.
-            </p>
-          </div>
+            </motion.p>
+          </motion.div>
 
           {/* Right Image */}
-          <div className="flex-shrink-0">
-            <img
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8 }}
+            className="flex-shrink-0"
+          >
+            <motion.img
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.3 }}
               src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80"
               alt="Fresh produce"
               className="w-[508px] h-[657px] rounded-lg object-cover"
             />
-          </div>
+          </motion.div>
         </div>
 
         {/* Contact Form Section */}
-        <div className="mt-24">
-          <h2 className="text-3xl font-semibold mb-8">Contact us</h2>
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-24"
+        >
+          <motion.h2 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+            className="text-3xl font-semibold mb-8"
+          >
+            Contact us
+          </motion.h2>
           <form onSubmit={handleSubmit} className="flex flex-wrap gap-8 max-w-[626px]">
-            <div className="w-[295px]">
+            <motion.div 
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              className="w-[295px]"
+            >
               <label className="block text-black text-base font-medium mb-2">
                 First name
               </label>
-              <input
+              <motion.input
+                whileFocus={{ scale: 1.01 }}
                 type="text"
                 name="firstName"
                 value={formData.firstName}
@@ -64,13 +113,19 @@ export default function About() {
                 className="w-full px-4 py-3 rounded-lg border border-[#E0E0E0] shadow-sm focus:ring-2 focus:ring-black/5 outline-none"
                 placeholder="Enter your first name"
               />
-            </div>
+            </motion.div>
 
-            <div className="w-[297px]">
+            <motion.div 
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: 0.9 }}
+              className="w-[297px]"
+            >
               <label className="block text-black text-base font-medium mb-2">
                 Last name
               </label>
-              <input
+              <motion.input
+                whileFocus={{ scale: 1.01 }}
                 type="text"
                 name="lastName"
                 value={formData.lastName}
@@ -78,13 +133,19 @@ export default function About() {
                 className="w-full px-4 py-3 rounded-lg border border-[#E0E0E0] shadow-sm focus:ring-2 focus:ring-black/5 outline-none"
                 placeholder="Enter your last name"
               />
-            </div>
+            </motion.div>
 
-            <div className="w-full">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.0 }}
+              className="w-full"
+            >
               <label className="block text-black text-base font-medium mb-2">
                 Email address
               </label>
-              <input
+              <motion.input
+                whileFocus={{ scale: 1.01 }}
                 type="email"
                 name="email"
                 value={formData.email}
@@ -92,30 +153,41 @@ export default function About() {
                 className="w-full px-4 py-3 rounded-lg border border-[#E0E0E0] shadow-sm focus:ring-2 focus:ring-black/5 outline-none"
                 placeholder="Enter your email"
               />
-            </div>
+            </motion.div>
 
-            <div className="w-full">
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.1 }}
+              className="w-full"
+            >
               <label className="block text-black text-base font-medium mb-2">
                 Your message
               </label>
-              <textarea
+              <motion.textarea
+                whileFocus={{ scale: 1.01 }}
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
                 className="w-full h-[146px] px-4 py-3 rounded-lg border border-[#E0E0E0] shadow-sm focus:ring-2 focus:ring-black/5 outline-none resize-none"
                 placeholder="Enter your question or message"
               />
-            </div>
+            </motion.div>
 
-            <button
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
               type="submit"
               className="px-8 py-4 bg-black text-white rounded-lg shadow-sm text-xl font-medium hover:bg-black/90 transition-colors"
             >
               Submit
-            </button>
+            </motion.button>
           </form>
-        </div>
-      </div>
+        </motion.div>
+      </SectionTransition>
     </div>
   );
 }

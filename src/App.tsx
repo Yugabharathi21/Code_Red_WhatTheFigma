@@ -1,7 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Navigation from './components/Navigation';
 import Footer from './components/Footer';
+import PageTransition from './components/PageTransition';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import About from './pages/About';
@@ -16,16 +18,38 @@ const AppContent = () => {
   return (
     <div className="min-h-screen flex flex-col">
       {!isLoginPage && <Navigation />}
-      <main className={`flex-1 ${isLoginPage ? '' : ''}`}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/shop" element={<Shop />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/product/1" element={<ProductDetail />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/article" element={<Article />} />
-        </Routes>
-      </main>
+      <AnimatePresence mode="wait">
+        <main className={`flex-1 ${isLoginPage ? '' : ''}`}>
+          <Routes location={location} key={location.pathname}>
+            <Route path="/" element={
+              <PageTransition>
+                <Home />
+              </PageTransition>
+            } />
+            <Route path="/shop" element={
+              <PageTransition>
+                <Shop />
+              </PageTransition>
+            } />
+            <Route path="/about" element={
+              <PageTransition>
+                <About />
+              </PageTransition>
+            } />
+            <Route path="/product/1" element={
+              <PageTransition>
+                <ProductDetail />
+              </PageTransition>
+            } />
+            <Route path="/login" element={<Login />} />
+            <Route path="/article" element={
+              <PageTransition>
+                <Article />
+              </PageTransition>
+            } />
+          </Routes>
+        </main>
+      </AnimatePresence>
       {!isLoginPage && <Footer />}
     </div>
   );

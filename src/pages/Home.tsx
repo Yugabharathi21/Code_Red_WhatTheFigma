@@ -108,45 +108,52 @@ const Home: React.FC = () => {
           </div>
         </SectionTransition>
 
-        {/* Features Section */}
-        <SectionTransition direction="up" className="w-full mt-12 sm:mt-16 lg:mt-24">
-          <h2 className="text-black text-2xl sm:text-3xl md:text-4xl lg:text-[48px] font-semibold font-inter mb-6 sm:mb-8 lg:mb-12">
-            Why We're Different
-          </h2>
-          <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-12">
-            <div className="w-full lg:w-[516px] flex flex-col justify-start gap-6 sm:gap-8 lg:gap-12">
-              {[
-                {
-                  title: "Premium Quality",
-                  description: "We ensure the highest quality standards with farm-to-table freshness"
-                },
-                {
-                  title: "Sustainably Sourced",
-                  description: "Our products come from sustainable farming practices for a healthier planet."
-                },
-                {
-                  title: "Fast & Reliable Delivery",
-                  description: "Get your groceries delivered fresh and on time, every time."
-                }
-              ].map((feature, index) => (
-                <motion.div 
-                  key={index} 
-                  className="flex flex-col justify-center items-start gap-2 sm:gap-3"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 * index }}
-                >
-                  <h3 className="text-black text-lg sm:text-xl md:text-2xl font-medium font-inter leading-relaxed">
-                    {feature.title}
-                  </h3>
-                  <p className="text-[#828282] text-base sm:text-lg md:text-xl lg:text-2xl font-normal font-inter leading-relaxed">
-                    {feature.description}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </SectionTransition>
+          {/* Features Section */}
+          <SectionTransition direction="up" className="w-full mt-12 sm:mt-16 lg:mt-24">
+          <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 lg:gap-12 items-center">
+  {/* Text Section */}
+  <div className="w-full lg:w-[516px] flex flex-col justify-start gap-6 sm:gap-8 lg:gap-12">
+    {[
+      {
+        title: "Premium Quality",
+        description: "We ensure the highest quality standards with farm-to-table freshness."
+      },
+      {
+        title: "Sustainably Sourced",
+        description: "Our products come from sustainable farming practices for a healthier planet."
+      },
+      {
+        title: "Fast & Reliable Delivery",
+        description: "Get your groceries delivered fresh and on time, every time."
+      }
+    ].map((feature, index) => (
+      <motion.div 
+        key={index} 
+        className="flex flex-col justify-center items-start gap-2 sm:gap-3"
+        initial={{ opacity: 0, x: -20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 * index }}
+      >
+        <h3 className="text-black text-lg sm:text-xl md:text-2xl font-medium font-inter leading-relaxed">
+          {feature.title}
+        </h3>
+        <p className="text-[#828282] text-base sm:text-lg md:text-xl lg:text-2xl font-normal font-inter leading-relaxed">
+          {feature.description}
+        </p>
+      </motion.div>
+    ))}
+  </div>
+
+  {/* Image Section */}
+  <div className="w-full lg:w-[516px] flex justify-center">
+    <img 
+      src="https://s3-alpha-sig.figma.com/img/ad77/3759/391bb742e64b67ae254c60116828b50b?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=X-BFmAYlMIOcZoYE-b7iyJFKsYulHHzQn~gCB14aEci4xIsiMVgLUFoq0d9mlw2ylvehmC7vfp2m5iOS-c-grnaNHEvwZau9CQxwxoM~DAmN1DQGWigkpqBm04zIHWq4AV0CjbHlIWn1noIEg4yIFz5~y7EAOHaFYvOhZigMVNiFTmSC7BgiEQWXOx8bM4npdRha0k8V7xdKIMIDS42psPvdRE7hhmPmYpmvRbvlwRrzGcpIGNCOArcafw6RRGNuBCQYPXvrgFf1bIkzkpAIMwGxKoGTaU8ZkRb0kCPKLsoKUW9UGdM93AjyMajXzs4eiA9hfLAoQCXrjtBZy8Mybw__"
+      alt="Feature Section Image"
+      className="rounded-xl shadow-lg w-full h-auto"
+    />
+  </div>
+</div>
+          </SectionTransition>
 
         {/* Why Choose Us Section */}
         <SectionTransition direction="up" className="w-full mt-12 sm:mt-16 lg:mt-24">

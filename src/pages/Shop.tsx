@@ -13,7 +13,7 @@ export default function Shop() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative w-full h-[500px] sm:h-[600px] md:h-[720px]"
+        className="relative w-full h-[720px]"
       >
         <motion.div 
           initial={{ scale: 1.1 }}
@@ -26,22 +26,22 @@ export default function Shop() {
         </motion.div>
 
         {/* Special Navigation */}
-        <motion.nav
+        <motion.nav 
           initial={{ y: -20, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
           className="absolute top-0 left-0 right-0 z-10"
         >
-          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-20 h-[100px] sm:h-[120px] md:h-[164px] flex justify-between items-center">
+          <div className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-20 h-[164px] flex justify-between items-center">
             <motion.div
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.2 }}
             >
-              <Link to="/" className="text-white text-2xl sm:text-3xl font-medium leading-[48px] font-inter">
+              <Link to="/" className="text-white text-3xl font-medium leading-[48px] font-inter">
                 FreshHarvest
               </Link>
             </motion.div>
-            <div className="hidden lg:flex items-center gap-6 xl:gap-12">
+            <div className="hidden lg:flex items-center gap-12">
               {['/', '/about', '/product/1'].map((path, index) => (
                 <motion.div
                   key={path}
@@ -52,7 +52,7 @@ export default function Shop() {
                 >
                   <Link 
                     to={path} 
-                    className="text-white text-lg xl:text-xl font-medium leading-[30px] font-inter hover:text-white/90 transition-colors"
+                    className="text-white text-xl font-medium leading-[30px] font-inter hover:text-white/90 transition-colors"
                   >
                     {path === '/' ? 'Home' : path === '/about' ? 'About Us' : 'Learn More'}
                   </Link>
@@ -64,7 +64,7 @@ export default function Shop() {
                 transition={{ duration: 0.3, delay: 0.6 }}
                 whileHover={{ scale: 1.05 }}
               >
-                <Link to="/login" className="px-5 sm:px-6 py-3 sm:py-3.5 border-2 border-white text-white text-base font-medium leading-6 font-inter rounded-lg shadow-sm hover:bg-white/10 transition-colors">
+                <Link to="/login" className="px-6 py-3.5 border-2 border-white text-white text-base font-medium leading-6 font-inter rounded-lg shadow-sm hover:bg-white/10 transition-colors">
                   Login
                 </Link>
               </motion.div>
@@ -76,7 +76,7 @@ export default function Shop() {
               transition={{ duration: 0.3, delay: 0.2 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="lg:hidden p-2 text-white z-20"
+              className="lg:hidden p-2 text-white"
               aria-label="Toggle menu"
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -97,9 +97,9 @@ export default function Shop() {
               opacity: isMenuOpen ? 1 : 0
             }}
             transition={{ duration: 0.3 }}
-            className="lg:hidden fixed top-0 right-0 left-0 mt-[100px] sm:mt-[120px] md:mt-[164px] bg-black/90 overflow-hidden z-10"
+            className="lg:hidden absolute top-[164px] left-0 right-0 bg-black/90 overflow-hidden"
           >
-            <div className="flex flex-col gap-4 p-4 sm:p-6">
+            <div className="flex flex-col gap-4 p-4">
               {['/', '/about', '/product/1', '/login'].map((path, index) => (
                 <motion.div
                   key={path}
@@ -109,8 +109,8 @@ export default function Shop() {
                 >
                   <Link 
                     to={path} 
-                    className={`text-base sm:text-lg font-medium leading-[30px] font-inter text-white hover:text-white/90 transition-colors block py-2 ${
-                      path === '/login' ? 'px-5 sm:px-6 py-3 sm:py-3.5 border-2 border-white rounded-lg shadow-sm hover:bg-white/10 w-full text-center mt-2' : ''
+                    className={`text-lg font-medium leading-[30px] font-inter text-white hover:text-white/90 transition-colors ${
+                      path === '/login' ? 'px-6 py-3.5 border-2 border-white rounded-lg shadow-sm hover:bg-white/10 w-full text-center' : ''
                     }`}
                     onClick={() => setIsMenuOpen(false)}
                   >
@@ -123,37 +123,55 @@ export default function Shop() {
         </motion.nav>
 
         {/* Hero Content */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-20 text-center">
-            <motion.h1 
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="relative max-w-[844px] mx-auto px-4 pt-[120px]"
+        >
+          <div className="flex flex-col items-center gap-10">
+            <div className="flex flex-col gap-4 text-center">
+              <motion.h1 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                className="text-4xl md:text-5xl lg:text-[64px] font-bold text-white leading-tight"
+              >
+                Shop Fresh & Organic
+              </motion.h1>
+              <motion.p 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.8 }}
+                className="text-lg md:text-xl lg:text-2xl font-medium text-white leading-relaxed"
+              >
+                Explore our selection of premium fresh produce and organic food
+              </motion.p>
+            </div>
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-bold font-inter leading-tight mb-4 sm:mb-6"
+              transition={{ duration: 0.6, delay: 1 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
-              Fresh Harvest Shop
-            </motion.h1>
-            <motion.p 
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              className="text-white/90 text-base sm:text-lg md:text-xl lg:text-2xl font-normal font-inter leading-relaxed max-w-[800px] mx-auto"
-            >
-              Discover our selection of fresh, organic produce and artisanal goods
-            </motion.p>
+              <Link to="/shop" className="inline-flex px-8 py-5 bg-black text-white text-2xl font-medium rounded-lg shadow hover:bg-black/90 transition-colors">
+                Shop
+              </Link>
+            </motion.div>
           </div>
-        </div>
+        </motion.div>
       </motion.div>
 
       {/* Seasonal Picks Section */}
-      <SectionTransition direction="left" className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-20 py-12 sm:py-16 md:py-20">
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
-          <div className="flex flex-col gap-4 sm:gap-6">
+      <SectionTransition direction="left" className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-20 py-16 md:py-20">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="flex flex-col gap-6">
             <motion.h2 
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-2xl sm:text-3xl md:text-4xl font-semibold text-black"
+              className="text-3xl md:text-4xl font-semibold text-black"
             >
               Seasonal Picks
             </motion.h2>
@@ -161,7 +179,7 @@ export default function Shop() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#828282]"
+              className="text-xl md:text-2xl text-[#828282]"
             >
               A subheading for this section, as long or as short as you like
             </motion.p>
@@ -171,55 +189,40 @@ export default function Shop() {
               transition={{ duration: 0.6, delay: 0.4 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto"
             >
               <Link 
                 to="/products/seasonal-picks" 
-                className="w-full sm:w-fit inline-block px-4 sm:px-6 py-3 bg-[#E6E6E6] text-black text-base sm:text-lg md:text-xl lg:text-2xl font-medium rounded-lg shadow hover:bg-[#d9d9d9] transition-colors text-center"
+                className="w-fit px-6 py-3 bg-[#E6E6E6] text-black text-2xl font-medium rounded-lg shadow hover:bg-[#d9d9d9] transition-colors"
               >
                 Learn More
               </Link>
             </motion.div>
           </div>
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ scale: 1.02 }}
+            className="aspect-[1.56/1] w-full"
           >
-            <motion.img 
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              src="https://s3-alpha-sig.figma.com/img/fb25/d8f9/83ea2e776c241974d5ef8eed56b84417?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=eAKSrPcabw5RVzyXFVL4OGj5QqUyRE4vE2QEwzM0XvfhYIk4s6qect5P~tXpp2OJluFIOl9cjazs-GOG28z~fp15x2FJ6DYZWGe6I-MA081dbeBfuZ7L0Fr-lvDY8bNv0t2ejYbz0cwjOzE5FVV3VMJ76nhC3hVYKfz8fPvgPLQnc2uQaUFEBOhqAcM0AZ0tCeTaVQwnfdGEQ77K0u06EA3VzZ4a9DbHTGgZBgPZCLl7tdsYz3D2CF-TIHwncrKcxRmnzPkOwmW8Ye5Czs0Q3UBC3RCbD973amE5neixO~cKqLuSqq4zgLHguTQ7wRzDtolIBGFiaIj0014te8z3nA__" 
-              alt="Seasonal fruits and vegetables" 
-              className="w-full h-[250px] sm:h-[300px] md:h-[400px] rounded-lg object-cover" 
+            <img 
+              src="https://s3-alpha-sig.figma.com/img/c535/c606/a56fa44dbbcaf407983feb95a19c7549?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=V533BcexQaNiHLfpdGFifAyghzu91NAFE~-Hg85aidouTp-MU8Og9g19Q8s5DO4OJRrUhv3PHShVvJHtEoFRBg9wGngze9pSl4yeSKyp~VNS7s5wYtsMrhdtWvLWmzp3AY3vYaclqKJiaub9WbddK~lKRtFkNXe3QfdndJIfOJNG95JKwXOyxuGETg3bkLKp4I3f1n~21smFyxJkFzMFsII7BwzjfM5HZOo-2xkD0~ManeNmSlTxwLhiHnswnmLVE6x2qXLeAeBuJXskj4JAourpxKeJcUeL6xvafq2htRmVRIEce1CSLCp9abtH-Yvrbpr6dj7dugX4zRtyW2LFPg__" 
+              alt="Fresh seasonal fruits and vegetables arranged on a wooden table" 
+              className="w-full h-full object-cover rounded-lg bg-[#F7F7F7]" 
             />
           </motion.div>
         </div>
       </SectionTransition>
 
       {/* Best Sellers Section */}
-      <SectionTransition direction="right" className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-20 py-12 sm:py-16 md:py-20 bg-[#F7F7F7]">
-        <div className="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="order-2 md:order-1"
-          >
-            <motion.img 
-              whileHover={{ scale: 1.02 }}
-              transition={{ duration: 0.3 }}
-              src="https://s3-alpha-sig.figma.com/img/f3eb/12ac/603716fd0ec4e8600b4333d8950c7b89?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=kPNgdG0AVjzE6dkQhwOdaIqeUQRCLh03FIVfM~g~eUvuEN3IThW4m9CcMsIrem4vDVe0SJt6T5eSal8xjAt9kPPSJd9gEM8JH0P2iQB4mSs9iSbtV4nO9fcsylQEhUTyEhBWZZOVNxfCwsjf3vNjJSeyvzTYRq42xbT~BDrsUgDjA85UMzl4cmRY4Uqdk8oM75x4ab46yNpvFXz~sSCbDlpIRCD9ya9q4o8C90Wfats7V4LSFvux3QAERNIlgel6FxKrZAfoyWhnu8hBp2wQjTLd0s3J4xXagLZ2xLmxIE30N11VxC3qbzobNmKFBFN834dPNh2G7VAtTifx3Qajog__" 
-              alt="Best selling products" 
-              className="w-full h-[250px] sm:h-[300px] md:h-[400px] rounded-lg object-cover" 
-            />
-          </motion.div>
-          <div className="flex flex-col gap-4 sm:gap-6 order-1 md:order-2">
+      <SectionTransition direction="right" className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-20 py-16 md:py-20">
+        <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="md:order-2 flex flex-col gap-6">
             <motion.h2 
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              className="text-2xl sm:text-3xl md:text-4xl font-semibold text-black"
+              className="text-3xl md:text-4xl font-semibold text-black"
             >
               Best Sellers
             </motion.h2>
@@ -227,9 +230,9 @@ export default function Shop() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-[#828282]"
+              className="text-xl md:text-2xl text-[#828282]"
             >
-              Our most popular products that customers love
+              A subheading for this section, as long or as short as you like
             </motion.p>
             <motion.div
               initial={{ opacity: 0, x: 20 }}
@@ -237,37 +240,49 @@ export default function Shop() {
               transition={{ duration: 0.6, delay: 0.4 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="w-full sm:w-auto"
             >
               <Link 
                 to="/products/best-sellers" 
-                className="w-full sm:w-fit inline-block px-4 sm:px-6 py-3 bg-[#E6E6E6] text-black text-base sm:text-lg md:text-xl lg:text-2xl font-medium rounded-lg shadow hover:bg-[#d9d9d9] transition-colors text-center"
+                className="w-fit px-6 py-3 bg-[#E6E6E6] text-black text-2xl font-medium rounded-lg shadow hover:bg-[#d9d9d9] transition-colors"
               >
                 Learn More
               </Link>
             </motion.div>
           </div>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
+            whileHover={{ scale: 1.02 }}
+            className="md:order-1 aspect-[1.56/1] w-full"
+          >
+            <img 
+              src="https://s3-alpha-sig.figma.com/img/b688/c7b2/47fe392d73c27df0c65a52af6d3eb141?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=iSE750iDfjkeCvxXB6LwU5X6P2Hidc7VpfbbrXs6J-aMnRN84Mf70utc-FzvC1ZGdGdOfwFAkew4AT~HK5hkeYRMPKOkiH~-zHM7VvbolivzJvwOEr5O18SHcv4tL2LThACtIULflCc4vuuNcs2NUgvK6gZV3ygh~fjw-DMsVQHM5B40PW0Hg5lhJen9H8Zo4CAYVMG08RE29Wk5IaDsI3Q8ERlDGPvXJz~TZ-XwZIpk7I1GrY9Oy8FGu2M5VZItuaeRww1T~yy7zHj8KoyxRF5JIc2Uz2p8x9a5e-D5A9bJvMz1Rnwv5ZpwwAIMg4447AuLZuuVy-aS6IWb0k59mA__" 
+              alt="Collection of our best-selling organic vegetables" 
+              className="w-full h-full object-cover rounded-lg bg-[#F7F7F7]" 
+            />
+          </motion.div>
         </div>
       </SectionTransition>
 
       {/* Fresh & Organic Selection */}
-      <SectionTransition direction="up" className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-20 py-12 sm:py-16 md:py-20">
+      <SectionTransition direction="up" className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-20 py-16 md:py-20">
         <motion.h2 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold text-black mb-6 sm:mb-8 md:mb-12"
+          className="text-3xl md:text-4xl lg:text-5xl font-semibold text-black mb-12"
         >
           Fresh & Organic Selection
         </motion.h2>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="sm:col-span-2"
+            className="lg:col-span-2"
           >
-            <div className="flex flex-col gap-4 sm:gap-6">
+            <div className="flex flex-col gap-6">
               <Link to="/products/featured-pears" className="group">
                 <motion.img 
                   whileHover={{ scale: 1.02 }}
@@ -276,55 +291,138 @@ export default function Shop() {
                   alt="Fresh organic pears, our featured product" 
                   className="w-full aspect-square object-cover rounded-lg bg-[#F7F7F7]" 
                 />
-                <div className="mt-3 sm:mt-4">
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-medium text-black group-hover:underline">Featured Pears</h3>
-                  <p className="text-base sm:text-lg text-[#828282]">Our signature organic pears, freshly harvested</p>
-                  <p className="text-lg sm:text-xl font-medium text-black mt-1 sm:mt-2">$12.99</p>
-                </div>
-              </Link>
-            </div>
-          </motion.div>
-          
-          {[
-            {
-              path: "/products/fresh-fruits",
-              image: "https://images.unsplash.com/photo-1619566636858-adf3ef46400b",
-              title: "Fruits",
-              description: "A delicate blend of fresh fruits for a balanced taste"
-            },
-            {
-              path: "/products/organic-mushrooms",
-              image: "https://images.unsplash.com/photo-1504545102780-26774c1bb073",
-              title: "Mushrooms",
-              description: "Organic mushrooms, perfect for gourmet dishes"
-            }
-          ].map((item, index) => (
-            <Link key={item.path} to={item.path} className="group">
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.5 + (index * 0.2) }}
-                className="flex flex-col gap-3 sm:gap-4 md:gap-6"
-              >
-                <motion.img 
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                  src={`${item.image}?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=515&h=283`}
-                  alt={item.title}
-                  className="w-full aspect-[1.82/1] object-cover rounded-lg bg-[#F7F7F7]" 
-                />
                 <motion.div 
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.4, delay: 0.6 + (index * 0.2) }}
-                  className="flex flex-col gap-1"
+                  transition={{ duration: 0.4, delay: 0.3 }}
+                  className="flex flex-col gap-1 mt-6"
                 >
-                  <h3 className="text-lg sm:text-xl md:text-2xl font-medium text-black group-hover:underline">{item.title}</h3>
-                  <p className="text-base sm:text-lg md:text-xl text-[#828282]">{item.description}</p>
-                  <p className="text-lg sm:text-xl font-medium text-black">$10.99</p>
+                  <h3 className="text-2xl font-medium text-black">Featured product</h3>
+                  <p className="text-lg md:text-xl text-[#828282]">Handpicked premium pears, rich in flavor and nutrients</p>
+                  <p className="text-xl font-medium text-black">$10.99</p>
                 </motion.div>
+              </Link>
+            </div>
+          </motion.div>
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="flex flex-col gap-8"
+          >
+            {[
+              {
+                path: "/products/fresh-fruits",
+                image: "https://images.unsplash.com/photo-1619566636858-adf3ef46400b",
+                title: "Fruits",
+                description: "A delicate blend of fresh fruits for a balanced taste"
+              },
+              {
+                path: "/products/organic-mushrooms",
+                image: "https://images.unsplash.com/photo-1504545102780-26774c1bb073",
+                title: "Mushrooms",
+                description: "Organic mushrooms, perfect for gourmet dishes"
+              }
+            ].map((item, index) => (
+              <Link key={item.path} to={item.path} className="group">
+                <motion.div 
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.5 + (index * 0.2) }}
+                  className="flex flex-col gap-6"
+                >
+                  <motion.img 
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                    src={`${item.image}?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=515&h=283`}
+                    alt={item.title}
+                    className="w-full aspect-[1.82/1] object-cover rounded-lg bg-[#F7F7F7]" 
+                  />
+                  <motion.div 
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.6 + (index * 0.2) }}
+                    className="flex flex-col gap-1"
+                  >
+                    <h3 className="text-2xl font-medium text-black">{item.title}</h3>
+                    <p className="text-lg md:text-xl text-[#828282]">{item.description}</p>
+                    <p className="text-xl font-medium text-black">$10.99</p>
+                  </motion.div>
+                </motion.div>
+              </Link>
+            ))}
+          </motion.div>
+        </div>
+      </SectionTransition>
+
+      {/* Why Shop With Us Section */}
+      <SectionTransition direction="up" className="max-w-[1440px] mx-auto px-4 md:px-6 lg:px-20 py-16 md:py-20">
+        <motion.h2 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-4xl lg:text-5xl font-semibold text-black mb-12"
+        >
+          Why Shop With Us?
+        </motion.h2>
+        <div className="grid md:grid-cols-2 gap-x-8 gap-y-12">
+          {[
+            {
+              icon: (
+                <svg className="w-6 h-6 text-[#454545]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
+                </svg>
+              ),
+              title: "Sustainability First",
+              description: "Our products are ethically sourced and environmentally friendly."
+            },
+            {
+              icon: (
+                <svg className="w-6 h-6 text-[#454545]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"></path>
+                </svg>
+              ),
+              title: "Customer Satisfaction",
+              description: "We prioritize customer experience with reliable service and fresh produce"
+            },
+            {
+              icon: (
+                <svg className="w-6 h-6 text-[#454545]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              ),
+              title: "Quality Assurance",
+              description: "Every product goes through a rigorous quality check before reaching you."
+            },
+            {
+              icon: (
+                <svg className="w-6 h-6 text-[#454545]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+              ),
+              title: "Fresh, Every Day",
+              description: "We ensure daily restocking for the best and freshest selection."
+            }
+          ].map((item, index) => (
+            <motion.div 
+              key={item.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 * index }}
+              whileHover={{ y: -5 }}
+              className="flex flex-col gap-2"
+            >
+              <motion.div 
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 + (0.1 * index) }}
+                className="w-8 h-8 flex items-center justify-center"
+              >
+                {item.icon}
               </motion.div>
-            </Link>
+              <h3 className="text-xl text-[#828282]">{item.title}</h3>
+              <p className="text-xl text-[#828282]">{item.description}</p>
+            </motion.div>
           ))}
         </div>
       </SectionTransition>

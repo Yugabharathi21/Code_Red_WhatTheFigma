@@ -72,7 +72,7 @@ export default function About() {
             <motion.img
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.3 }}
-              src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80"
+              src="https://s3-alpha-sig.figma.com/img/eef3/6a48/1a33eb6dc13aa6b624105a5a5e591e72?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=eXvR7ZkzcLlbGQLzRu2dellkkRNjb9tGu9zhCnWGp8Q7gKl3T6CiYGxsJ~MeS2EbOjOyw9CIfO7wGricqYUwrs0IEsABAAMlt~L9dyDuZz61dDwEp4~oY1L3yoZ1bxNvNajd837wJmQRbkDla5y0QQplbknUnd2sO-WHKzcHiLjiTGk-SIL-rN4fMj7DrGzZZ3tFKL660y2omdiY18NHMAoluwYLKUneG1gkVXRHshfYRs7AFwR9q25u2AuF1K4SrL~B-SD4QTFMnA29tW4gdc4Q~mN0EwWx7FRwN7R2MLH4qWpTqxCjmnn2OAW66mZo0Ag7Q0~hE-H-hRn2ZUkVhg__"
               alt="Fresh produce"
               className="w-[508px] h-[657px] rounded-lg object-cover"
             />

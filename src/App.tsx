@@ -36,7 +36,7 @@ const AppContent = () => {
                 <About />
               </PageTransition>
             } />
-            <Route path="/product/1" element={
+            <Route path="/product/:id" element={
               <PageTransition>
                 <ProductDetail />
               </PageTransition>

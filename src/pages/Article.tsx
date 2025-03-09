@@ -1,11 +1,125 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useSpring } from 'framer-motion';
 import SectionTransition from '../components/SectionTransition';
+import { AnimatePresence } from 'framer-motion';
 
 const Article: React.FC = () => {
+  const [isBookmarked, setIsBookmarked] = useState(false);
+  const [showShareMenu, setShowShareMenu] = useState(false);
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  const handleShare = (platform: string) => {
+    const url = window.location.href;
+    const title = "The Secret to Eating Healthy & Fresh";
+    
+    switch (platform) {
+      case 'twitter':
+        window.open(`https://twitter.com/intent/tweet?text=${title}&url=${url}`);
+        break;
+      case 'facebook':
+        window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}`);
+        break;
+      case 'linkedin':
+        window.open(`https://www.linkedin.com/shareArticle?mini=true&url=${url}&title=${title}`);
+        break;
+      case 'copy':
+        navigator.clipboard.writeText(url);
+        // Show feedback
+        const feedback = document.getElementById('copy-feedback');
+        if (feedback) {
+          feedback.style.opacity = '1';
+          setTimeout(() => {
+            feedback.style.opacity = '0';
+          }, 2000);
+        }
+        break;
+    }
+    setShowShareMenu(false);
+  };
+
   return (
     <div className="w-full max-w-[1440px] mx-auto min-h-screen relative bg-white px-4 md:px-6 lg:px-20">
+      {/* Reading Progress Bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-black origin-left z-50"
+        style={{ scaleX }}
+      />
+
+      {/* Floating Action Buttons */}
+      <div className="fixed right-8 top-1/2 transform -translate-y-1/2 flex flex-col gap-4">
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => setIsBookmarked(!isBookmarked)}
+          className="p-3 bg-white rounded-full shadow-lg"
+        >
+          <svg 
+            className={`w-6 h-6 ${isBookmarked ? 'fill-black' : 'stroke-black fill-none'}`}
+            viewBox="0 0 24 24"
+          >
+            <path strokeWidth="2" d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+          </svg>
+        </motion.button>
+
+        <div className="relative">
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            onClick={() => setShowShareMenu(!showShareMenu)}
+            className="p-3 bg-white rounded-full shadow-lg"
+          >
+            <svg className="w-6 h-6 stroke-black fill-none" viewBox="0 0 24 24">
+              <path strokeWidth="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"/>
+            </svg>
+          </motion.button>
+
+          {/* Share Menu */}
+          <AnimatePresence>
+            {showShareMenu && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95, x: -10 }}
+                animate={{ opacity: 1, scale: 1, x: 0 }}
+                exit={{ opacity: 0, scale: 0.95, x: -10 }}
+                className="absolute right-full top-0 mr-4 bg-white rounded-lg shadow-lg p-2 w-48"
+              >
+                <div className="flex flex-col gap-2">
+                  {[
+                    { platform: 'twitter', icon: 'Twitter', color: 'text-[#1DA1F2]' },
+                    { platform: 'facebook', icon: 'Facebook', color: 'text-[#4267B2]' },
+                    { platform: 'linkedin', icon: 'LinkedIn', color: 'text-[#0077B5]' },
+                    { platform: 'copy', icon: 'Copy Link', color: 'text-gray-700' }
+                  ].map(({ platform, icon, color }) => (
+                    <motion.button
+                      key={platform}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      onClick={() => handleShare(platform)}
+                      className={`flex items-center gap-2 px-4 py-2 rounded-md hover:bg-gray-100 ${color}`}
+                    >
+                      {icon}
+                    </motion.button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      </div>
+
+      {/* Copy Feedback */}
+      <div 
+        id="copy-feedback"
+        className="fixed bottom-8 right-8 bg-black text-white px-4 py-2 rounded-lg opacity-0 transition-opacity duration-200"
+      >
+        Link copied to clipboard!
+      </div>
+
       {/* Hero Section */}
       <SectionTransition direction="up">
         <motion.div 
@@ -44,7 +158,7 @@ const Article: React.FC = () => {
           <motion.img
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.3 }}
-            src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1281&h=650&q=80"
+            src="https://s3-alpha-sig.figma.com/img/9b92/834d/ba5db2760928a8f3f665c5a65b4b8020?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=tSwUkp92cjVqoJGHQ3hRWirMzWbev21AQy35ehLZmVLpH7otIHTjg2sg3KVrAAqGFCc4Lb3EjDciMy4bsBVIt0QLBX8lJnUwEZOIQDXHqfd3ryBtuPliRFFs1GBAvQOtxkt2hZrAglMKl3e6EzIxfymIY250WNhieNO8HNjCXgioXLBEBlNQuOTDS6FKOdu2otoXfwLSJC7Q2MEM6KlyafQ~4NTyepcfLLBudY0G~VqRBB1c2NH1OmMwcRqTfGRTg3BRCCP9PWGCIJVbcMK9ZIv2LUg0weoPJJiWCGurmolqB9MR1eJAL4elZ9dGR3m1z3zpFctXjgKvADIxBrxqCw__"
             alt="Healthy food spread"
             className="w-full max-w-[1281px] h-[400px] md:h-[550px] lg:h-[650px] object-cover rounded-lg"
           />
@@ -87,7 +201,7 @@ const Article: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             whileHover={{ scale: 1.02 }}
-            src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=624&h=436&q=80"
+            src="https://s3-alpha-sig.figma.com/img/222c/c630/37460d83213fc820abe67c0bb92fb1cb?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=rv9eCC-tqDoEpMhablOxiY8VYxBpk0~RTQ4j6leyMN77cDM8LpGbGX~HliNKQziQPy-DLt5~fh8G-KMakCJEK41Q8SeE4aYiPGTpN84Gk-YEqyuRQXk8BgpvRpHS-y1yrSWieMNN-0YReh~vOU~pMF1dym73javntd3hiEAclrI7pE5~ysDWWKhWAymxVZVkLdpP1wv1T~GAa87kBSQSVa3MIPkqOtzjkCAXPLTfSLor3x4wFfUkODPriNUCu0~NYstnZRzlCGq7CPpLh92jiQiWUmbewdQGzMQBkk8unaS-nqxoR3iWFNbV2xsg5TOgqnaSWhpkYZmzVIhtGho6gg__"
             alt="Healthy salad"
             className="w-full md:w-[624px] h-[300px] md:h-[436px] object-cover rounded-lg"
           />
@@ -96,7 +210,7 @@ const Article: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
             whileHover={{ scale: 1.02 }}
-            src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=624&h=436&q=80"
+            src="https://s3-alpha-sig.figma.com/img/f3eb/12ac/603716fd0ec4e8600b4333d8950c7b89?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=kPNgdG0AVjzE6dkQhwOdaIqeUQRCLh03FIVfM~g~eUvuEN3IThW4m9CcMsIrem4vDVe0SJt6T5eSal8xjAt9kPPSJd9gEM8JH0P2iQB4mSs9iSbtV4nO9fcsylQEhUTyEhBWZZOVNxfCwsjf3vNjJSeyvzTYRq42xbT~BDrsUgDjA85UMzl4cmRY4Uqdk8oM75x4ab46yNpvFXz~sSCbDlpIRCD9ya9q4o8C90Wfats7V4LSFvux3QAERNIlgel6FxKrZAfoyWhnu8hBp2wQjTLd0s3J4xXagLZ2xLmxIE30N11VxC3qbzobNmKFBFN834dPNh2G7VAtTifx3Qajog__"
             alt="Fresh vegetables"
             className="w-full md:w-[624px] h-[300px] md:h-[436px] object-cover rounded-lg"
           />
@@ -145,17 +259,17 @@ const Article: React.FC = () => {
               {
                 title: "5 Benefits of Organic Food",
                 author: "Author",
-                image: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=404&h=346&q=80"
+                image: "https://s3-alpha-sig.figma.com/img/4737/fe1b/f44d7342d9605d5c93635abf8a144817?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=ouu6KnvS0JaEF8GEGKBgDrw~Kk93KQ2UrXuNT0kl~rn80iAkeXhXCXnVBiUGazIaj4PRz~rE0daUGSsSL-fnf53vj9x~vcjYFL~CYfqiTxAAtXS3LOveKLkdF5wh09vg3s-DdOvNok0YAXvlEHP02ejJKSID2x-Ni764BZPAfkiYQaMCi74fkFZwZE5jsN7247T9v6QT3XyF7xCv0uwuxXO-lvQY8rL1QTj~FQs~~vKOwrglyZD8tkNxN7hlxDl8bOChwc8Pzpdhbe-jlX3dX0K49iZLDCpatQYFR78kWkRfK3x9P5zgVX~QV1tpWlEhQrYeDy78zE6-mtQG1hd19w__"
               },
               {
                 title: "How to Store Fruits Properly",
                 author: "Author",
-                image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&auto=format&fit=crop&w=404&h=346&q=80"
+                image: "https://s3-alpha-sig.figma.com/img/379c/0155/bc413a61ca41917df832a2e64530e9d7?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=KPVM7RP9am2b51V5k7VqPjax5OblTgUvHUgYLWcKXFctF6EFFLJQG1JKa5lg5-TdtEohl6ZnIfGSowHL6-RmIuL1M20dWfIgTbBEKFws0mNpCJcIjwTppvxBVLT1XqiXPuobmv9o3gRYElOp1Z4rHfbWUP2gRVFCK5uTCwrZLdtSVb10JpXNNNynwvyJml5kX7CJ5Xv10C06ahDk6yCzYSSWHWqBowNZTneH35fX7XF0tHek-qyGaufZmCJIX13KSrnP~J8LIuzIivpy3mnh0biDSw8MqjDPxZmMiZpHXEnuQZGE9aIIRsQYbDlyFA5mYQslk5a6Jfo4lxRCUp42qQ__"
               },
               {
                 title: "Best Superfoods for Your Diet",
                 author: "Author",
-                image: "https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-4.0.3&auto=format&fit=crop&w=404&h=346&q=80"
+                image: "https://s3-alpha-sig.figma.com/img/44b0/aa43/a57e23aec207706d7933d9eaa0f3360a?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nOgKt40HIr5juk-OtLC8-5GPaFyJkufk~PAI8p1tHK6eCgzIbIioB5kijSruVq~pGpUDVgCHf1DvqD6KwaGv-JjA43n4HCMo4Stb2qLxVF-4nAIFJYKVldNWCKV~B~jllj1IC8mL~ugC1qbSKpcG1JJUL2qD7pwUhmBRo1-RB5FH90VNM7tBJCBR7FyFogLfJEQu4ELHc2wyUq0phAWfhv0kTZobiwSembTyAe1cLkFhAxghv63qvxBULvw~I8~Q1qTNr98U27vhswDJ8QwLu0U1xo0RIVUT79fhgi0ZCHxdu3SWjZgiRKqMYh7rApATcgw2vFvvfRwOcfWoLkU~yQ__"
               }
             ].map((article, index) => (
               <motion.div 

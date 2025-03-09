@@ -166,7 +166,7 @@ const Login: React.FC = () => {
         transition={{ duration: 0.7 }}
         className="w-full h-[30vh] md:h-screen md:w-[55%] bg-cover bg-center bg-no-repeat relative overflow-hidden" 
         style={{ 
-          backgroundImage: 'url("https://images.unsplash.com/photo-1497215728101-856f4ea42174?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80")',
+          backgroundImage: 'url("https://s3-alpha-sig.figma.com/img/8daa/009f/c944409c5b82eba9d52bd79309a1923b?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=nj~Ui7mCFZwppJm1L7qoFqjWW2RHq2q6~QiH8HoFlgMzf1Nm-rDU8Hx94wCQfwzVJKOvQLtrA3CAAZVOMoVP~R~QDLDTDEY94nYimVEDEeb0Mz6322qL4x506Iv9wyuCGmgTAe9RNmsa359FcYBOdSw9~FqOV1yLvCC0ik8n6Yl~k641hYFAdazuCChaY-VriLzeb6bDhEjLCD3JDCUIjmnc0EoUaUjDor1dAY3T918zxceobv8vGcVzg5QOyvMDGoty8-Kn6q1SKtjWsXwJlnSh12U7s~FOlMcJZjJ3fVmJkWA4XRI7aeMevhe5yv-b2XehlyTiTVKwQQFpzPWlow__")',
           backgroundPosition: 'center',
         }}
       >

@@ -20,7 +20,7 @@ export default function Shop() {
           animate={{ scale: 1 }}
           transition={{ duration: 1.2 }}
           className="absolute inset-0 bg-[#F7F7F7] bg-cover bg-center" 
-          style={{ backgroundImage: 'url(https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1442&q=80)' }}
+          style={{ backgroundImage: 'url(https://s3-alpha-sig.figma.com/img/5232/b103/830b7cc9a42d4746c4deb07caa32d12d?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OIRdb5DE8XjZO2rfizbTFMBi7-DvHs98ursTMJyrbW~snygelMeOvhOlF7g69odzRXgrYk~v-deuijittuOkOPpRE5EKtrVx7Y0rwZZfECJjoB5byz3OJVtC33p0orSz7YHIqxd8qm1gpQY0SA0L2bEovAQm~5B0wZqo~pZsLAWhXO~2Osoc4brfFrly2fUAmynZSHDiG8~zQy7nO~ACYfMChJNiqpI32lD9T8XkhJnKA10ZLETE95bDo3ifWGcbUKh6QVM8n1-pjGXnsVXlThF77UuwRnn7YGSQF4m40JIPAsKGFPke5e4wU17exi8YTTdgAQCXgfBj8ohi9ez65Q__)' }}
         >
           <div className="absolute inset-0 bg-black/24"></div>
         </motion.div>
@@ -206,7 +206,7 @@ export default function Shop() {
             className="aspect-[1.56/1] w-full"
           >
             <img 
-              src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=624&h=400" 
+              src="https://s3-alpha-sig.figma.com/img/c535/c606/a56fa44dbbcaf407983feb95a19c7549?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=V533BcexQaNiHLfpdGFifAyghzu91NAFE~-Hg85aidouTp-MU8Og9g19Q8s5DO4OJRrUhv3PHShVvJHtEoFRBg9wGngze9pSl4yeSKyp~VNS7s5wYtsMrhdtWvLWmzp3AY3vYaclqKJiaub9WbddK~lKRtFkNXe3QfdndJIfOJNG95JKwXOyxuGETg3bkLKp4I3f1n~21smFyxJkFzMFsII7BwzjfM5HZOo-2xkD0~ManeNmSlTxwLhiHnswnmLVE6x2qXLeAeBuJXskj4JAourpxKeJcUeL6xvafq2htRmVRIEce1CSLCp9abtH-Yvrbpr6dj7dugX4zRtyW2LFPg__" 
               alt="Fresh seasonal fruits and vegetables arranged on a wooden table" 
               className="w-full h-full object-cover rounded-lg bg-[#F7F7F7]" 
             />
@@ -257,7 +257,7 @@ export default function Shop() {
             className="md:order-1 aspect-[1.56/1] w-full"
           >
             <img 
-              src="https://images.unsplash.com/photo-1488459716781-31db52582fe9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=625&h=400" 
+              src="https://s3-alpha-sig.figma.com/img/b688/c7b2/47fe392d73c27df0c65a52af6d3eb141?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=iSE750iDfjkeCvxXB6LwU5X6P2Hidc7VpfbbrXs6J-aMnRN84Mf70utc-FzvC1ZGdGdOfwFAkew4AT~HK5hkeYRMPKOkiH~-zHM7VvbolivzJvwOEr5O18SHcv4tL2LThACtIULflCc4vuuNcs2NUgvK6gZV3ygh~fjw-DMsVQHM5B40PW0Hg5lhJen9H8Zo4CAYVMG08RE29Wk5IaDsI3Q8ERlDGPvXJz~TZ-XwZIpk7I1GrY9Oy8FGu2M5VZItuaeRww1T~yy7zHj8KoyxRF5JIc2Uz2p8x9a5e-D5A9bJvMz1Rnwv5ZpwwAIMg4447AuLZuuVy-aS6IWb0k59mA__" 
               alt="Collection of our best-selling organic vegetables" 
               className="w-full h-full object-cover rounded-lg bg-[#F7F7F7]" 
             />
@@ -287,7 +287,7 @@ export default function Shop() {
                 <motion.img 
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.3 }}
-                  src="https://images.unsplash.com/photo-1514756331096-242fdeb70d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=735&h=735" 
+                  src="https://s3-alpha-sig.figma.com/img/5232/b103/830b7cc9a42d4746c4deb07caa32d12d?Expires=1742169600&Key-Pair-Id=APKAQ4GOSFWCW27IBOMQ&Signature=OIRdb5DE8XjZO2rfizbTFMBi7-DvHs98ursTMJyrbW~snygelMeOvhOlF7g69odzRXgrYk~v-deuijittuOkOPpRE5EKtrVx7Y0rwZZfECJjoB5byz3OJVtC33p0orSz7YHIqxd8qm1gpQY0SA0L2bEovAQm~5B0wZqo~pZsLAWhXO~2Osoc4brfFrly2fUAmynZSHDiG8~zQy7nO~ACYfMChJNiqpI32lD9T8XkhJnKA10ZLETE95bDo3ifWGcbUKh6QVM8n1-pjGXnsVXlThF77UuwRnn7YGSQF4m40JIPAsKGFPke5e4wU17exi8YTTdgAQCXgfBj8ohi9ez65Q__" 
                   alt="Fresh organic pears, our featured product" 
                   className="w-full aspect-square object-cover rounded-lg bg-[#F7F7F7]" 
                 />
